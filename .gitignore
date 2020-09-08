@@ -1,3 +1,5 @@
 __pycache__
 
-dataset/lena.png
+*.png
+*.pkl
+*.gz
