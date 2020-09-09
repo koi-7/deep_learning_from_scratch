@@ -21,22 +21,22 @@ def relu(x):
     return np.maximum(0, x)
 
 
-def softmax(a):
-    c = np.max(a)
-    exp_a = np.exp(a - c)
-    sum_exp_a = np.sum(exp_a)
-    y = exp_a / sum_exp_a
+# def softmax(a):
+#     c = np.max(a)
+#     exp_a = np.exp(a - c)
+#     sum_exp_a = np.sum(exp_a)
+#     y = exp_a / sum_exp_a
 
-    return y
+#     return y
+
+
+def softmax(x):
+    x = x - np.max(x, axis=-1, keepdims=True)   # オーバーフロー対策
+    return np.exp(x) / np.sum(np.exp(x), axis=-1, keepdims=True)
 
 
 def sum_squared_error(y, t):
     return 0.5 * np.sum((y - t) ** 2)
-
-
-# def cross_entropy_error(y, t):
-#     delta = 1e-7
-#     return -np.sum(t * np.log(y + delta))
 
 
 def cross_entropy_error(y, t):
@@ -49,5 +49,4 @@ def cross_entropy_error(y, t):
         t = t.argmax(axis=1)
 
     batch_size = y.shape[0]
-    # return -np.sum(t * np.log(y + 1e-7)) / batch_size
     return -np.sum(np.log(y[np.arange(batch_size), t] + 1e-7)) / batch_size
