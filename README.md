@@ -11,7 +11,7 @@
 
 ## 注意点
 
-### 4章
+### 4 章
 
 train_neuralnet.py（p.120）は「1 エポックあたりの繰り返し数」の位置が違う。また、ハイパーパラメータの train_size も消してはいけない。
 
@@ -28,4 +28,14 @@ learning_rate = 0.1
 iter_per_epoch = max(train_size / batch_size, 1)  ## train_size が定義された後に記述
 
 ...
+```
+
+### 5 章
+
+common/functions.py の softmax 関数は以下のものに書き換えないと gradient_check.py で思うような値が出ない。
+
+``` python
+def softmax(x):
+    x = x - np.max(x, axis=-1, keepdims=True)   # オーバーフロー対策
+    return np.exp(x) / np.sum(np.exp(x), axis=-1, keepdims=True)
 ```
