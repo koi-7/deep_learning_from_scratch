@@ -39,3 +39,7 @@ def softmax(x):
     x = x - np.max(x, axis=-1, keepdims=True)   # オーバーフロー対策
     return np.exp(x) / np.sum(np.exp(x), axis=-1, keepdims=True)
 ```
+
+### 6 章
+
+p.191- の overfit_weight_dacay.py を動かすには common/layers.py の SoftmaxWithLoss クラス内で backward メソッドを書き換える必要がある
