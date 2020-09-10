@@ -42,4 +42,8 @@ def softmax(x):
 
 ### 6 章
 
-p.191- の overfit_weight_dacay.py を動かすには common/layers.py の SoftmaxWithLoss クラス内で backward メソッドを書き換える必要がある
+p.191- の overfit_weight_decay.py を動かすには common/layers.py の SoftmaxWithLoss クラス内で backward メソッドを書き換える必要がある
+
+### 7 章
+
+p.233 train_convnet.py を動かすにはエラーを見て [GitHub（オライリー）](https://github.com/oreilly-japan/deep-learning-from-scratch)を参考にしながらコードの書き換え、書き加えを行う必要がある。
